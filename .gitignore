@@ -35,6 +35,4 @@ bower.json
 .powenv
 
 # Ignore our documentation
-environment-setup.html
-environment-setup.pdf
-environment.md
+local-docs/
