@@ -36,3 +36,6 @@ bower.json
 
 # Ignore our documentation
 local-docs/
+
+# Ignore database configuration file
+database.yml
