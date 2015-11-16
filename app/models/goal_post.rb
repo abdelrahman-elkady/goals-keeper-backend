@@ -1,0 +1,3 @@
+class GoalPost < Post
+
+end

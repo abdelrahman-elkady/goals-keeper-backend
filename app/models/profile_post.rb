@@ -1,0 +1,3 @@
+class ProfilePost < Post
+
+end
