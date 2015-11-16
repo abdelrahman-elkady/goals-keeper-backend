@@ -1,3 +1,0 @@
-class profilePost < Post
-  
-end
