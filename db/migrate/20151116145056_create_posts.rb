@@ -3,7 +3,6 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :text
       t.string :type
-      t.integer :type_id
       add_reference :comment, :post, index: true, foreign_key: true
       t.timestamps null: false
     end
