@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :text
       t.string :type
-      t.boolean :private ,:default:false
+      t.boolean :private ,default: false
       add_reference :comment, :post, index: true, foreign_key: true
       t.timestamps null: false
     end
