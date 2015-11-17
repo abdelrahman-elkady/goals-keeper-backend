@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 20151116190443) do
     t.string   "text"
     t.string   "type"
     t.boolean  "private",    default: false
-    t.integer  "post_id"
+    t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "posts", ["post_id"], name: "index_posts_on_post_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -71,5 +71,5 @@ ActiveRecord::Schema.define(version: 20151116190443) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
-  add_foreign_key "posts", "posts"
+  add_foreign_key "posts", "users"
 end
