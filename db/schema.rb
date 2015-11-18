@@ -30,10 +30,12 @@ ActiveRecord::Schema.define(version: 20151118221237) do
   create_table "followings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "follower_id"
-    t.boolean  "blocked"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "followings", ["follower_id"], name: "index_followings_on_follower_id", using: :btree
+  add_index "followings", ["user_id"], name: "index_followings_on_user_id", using: :btree
 
   create_table "goals", force: :cascade do |t|
     t.string   "title"
