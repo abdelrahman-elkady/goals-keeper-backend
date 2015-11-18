@@ -1,32 +1,38 @@
-user_1 = User.create(first_name: 'someone1',last_name: 'his father 1',city: 'city',country: 'country',gender: true,date_of_birth: DateTime.now,profile_picture: '#')
-user_2 = User.create(first_name: 'someone2',last_name: 'his father 2',city: 'city',country: 'country',gender: true,date_of_birth: DateTime.now,profile_picture: '#')
+ali = User.create(first_name: 'ali',last_name: 'hassan',city: 'helwan',country: 'egypt',gender: true,date_of_birth: DateTime.now,profile_picture: '#')
+kady = User.create(first_name: 'abdelrahman',last_name: 'kady',city: 'maadi',country: 'egypt',gender: true,date_of_birth: DateTime.now,profile_picture: '#')
+abkr = User.create(first_name: 'mohammed',last_name: 'mostafa',city: 'maadi',country: 'egypt',gender: true,date_of_birth: DateTime.now,profile_picture: '#')
+abdo = User.create(first_name: 'abdelrahman',last_name: 'mahmoud',city: 'haram',country: 'egypt',gender: true,date_of_birth: DateTime.now,profile_picture: '#')
 
-goal_1 = Goal.create(title: 'I need to ..',description: 'To do ..')
-goal_2 = Goal.create(title: 'I need to Banana ..',description: 'Para tu ..')
+a_plus = Goal.create(title: 'I need to get A+ in all subjects',description: 'because i want to be a rank')
+quit_somking = Goal.create(title: 'I need to stop smoking',description: 'because ciggarittes are expensive')
 
-user_1.goals << goal_1
-user_1.save
 
-user_2.goals << goal_1
-user_2.goals << goal_2
-user_2.save
+ali.goals << a_plus
+ali.save
+
+kady.goals << a_plus
+kady.goals << quit_somking
+kady.save
 
 post_1 = GoalPost.new
-post_1.text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .'
-post_1.goal = goal_1
-post_1.creator = user_1
+post_1.text = 'i will study all day today'
+post_1.goal = a_plus
+post_1.creator = kady
 post_1.save
 
+
 post_2 = ProfilePost.new
-post_2.text = 'Helo Men )) Ruski ?'
-post_2.creator = user_2
-post_2.profile = user_1
+post_2.text = 'would you explain ruby to me ? please ...'
+post_2.creator = ali
+post_2.profile = kady
 post_2.save
 
 post_3 = GoalPost.new
-post_3.text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .'
-post_3.creator = user_2
+post_3.text = 'i would like to improve my GPA this semester too'
+post_3.creator = abdo
+post_1.goal = quit_somking
 post_3.save
+
 
 f = Following.new
 f.user = user_1
