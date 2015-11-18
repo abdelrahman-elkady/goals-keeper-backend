@@ -21,3 +21,7 @@ post_3.creator = user_2
 post_3.save
 
 f = Following.new
+f.user = user_1
+f.follower = user_2
+f.save
+#user_2 is folloing user_1
