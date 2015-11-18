@@ -35,7 +35,11 @@ post_3.save
 
 
 f = Following.new
-f.user = user_1
-f.follower = user_2
+f.user = ali
+f.follower = abdo
 f.save
-#user_2 is folloing user_1
+
+f2 = Following.new
+f2.user = abdo
+f2.follower = kady
+f2.save
