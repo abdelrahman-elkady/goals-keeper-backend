@@ -8,7 +8,6 @@ class Post < ActiveRecord::Base
 
     scope :goal_posts, -> { where(type: 'GoalPost') }
     scope :profile_posts, -> { where(type: 'ProfilePost') }
-    scope :creator_posts, ->(user_id) { where(creator_id: user_id) }
 
     def self.types
       %w(GoalPost ProfilePost)
