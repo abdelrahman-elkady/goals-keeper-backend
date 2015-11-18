@@ -1,6 +1,6 @@
 class Goal < ActiveRecord::Base
 	has_many :posts
-  belongs_to :user
+  has_and_belongs_to_many :users
 
 	delegate :goal_posts, to: :posts
 end

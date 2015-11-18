@@ -2,6 +2,14 @@ user_1 = User.create(first_name: 'someone1',last_name: 'his father 1',city: 'cit
 user_2 = User.create(first_name: 'someone2',last_name: 'his father 2',city: 'city',country: 'country',gender: true,date_of_birth: DateTime.now,profile_picture: '#')
 
 goal_1 = Goal.create(title: 'I need to ..',description: 'To do ..')
+goal_2 = Goal.create(title: 'I need to Banana ..',description: 'Para tu ..')
+
+user_1.goals << goal_1
+user_1.save
+
+user_2.goals << goal_1
+user_2.goals << goal_2
+user_2.save
 
 post_1 = GoalPost.new
 post_1.text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .'
