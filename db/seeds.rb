@@ -19,3 +19,5 @@ post_3 = GoalPost.new
 post_3.text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .'
 post_3.creator = user_2
 post_3.save
+
+f = Following.new
