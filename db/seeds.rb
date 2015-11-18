@@ -33,6 +33,16 @@ post_3.creator = abdo
 post_3.goal = quit_smoking
 post_3.save
 
+comment_1 = Comment.new
+comment_1.body = 'All day ? I dare you !'
+comment_1.user = ali
+comment_1.post = post_1
+comment_1.save
+
+like_1 = Like.new
+like_1.post = post_1
+like_1.user = abdo
+like_1.save
 
 f = Following.new
 f.user = ali
