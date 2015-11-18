@@ -9,6 +9,13 @@ post_1.goal = goal_1
 post_1.creator = user_1
 post_1.save
 
-# post_2 = ProfilePost.new
-# post_2.text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .'
-# post_1.user = user
+post_2 = ProfilePost.new
+post_2.text = 'Helo Men )) Ruski ?'
+post_2.creator = user_2
+post_2.profile = user_1
+post_2.save
+
+post_3 = GoalPost.new
+post_3.text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .'
+post_3.creator = user_2
+post_3.save
