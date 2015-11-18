@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  validates :first_name, presence: true
+
   has_many :likes
   has_many :comments
   has_and_belongs_to_many :goals
