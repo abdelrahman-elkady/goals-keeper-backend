@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
 
 	validates :creator, :presence => true
 	validates_length_of :text, :minimum => 5, :maximum => 50, :allow_blank => false
-	validates_inclusion_of :type, :in => [GoalPost, ProfilePost]
+	validates_inclusion_of :type, :in => ["GoalPost", "ProfilePost"]
 
 
     has_many :comments
