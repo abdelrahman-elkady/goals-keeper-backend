@@ -53,3 +53,13 @@ f2 = Following.new
 f2.user = abdo
 f2.follower = kady
 f2.save
+
+f3 = Following.new
+f3.user = kady
+f3.follower = abdo
+f3.save
+
+f4 = Following.new
+f4.user = abkr
+f4.follower = abdo
+f4.save
