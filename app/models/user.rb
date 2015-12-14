@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :goals
 
   has_many :created_posts, :class_name => 'Post', :foreign_key => 'creator_id'
-  
+
   has_many :following_followers, :class_name => 'Following', :foreign_key => 'user_id'
   has_many :following_followings, :class_name => 'Following', :foreign_key => 'follower_id'
 
