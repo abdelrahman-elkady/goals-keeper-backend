@@ -14,8 +14,4 @@ class User < ActiveRecord::Base
   has_many :followers, :through => :following_followers
   has_many :followings, :through => :following_followings, :source => :user
 
-  def posts
-    Post.where("creator_id = ? or profile_id = ?",id,id)
-  end
-
 end
