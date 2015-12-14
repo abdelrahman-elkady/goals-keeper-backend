@@ -71,11 +71,9 @@ ActiveRecord::Schema.define(version: 20151118230413) do
     t.integer  "goal_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.integer  "creator_id"
     t.integer  "profile_id"
   end
 
-  add_index "posts", ["creator_id"], name: "index_posts_on_creator_id", using: :btree
   add_index "posts", ["goal_id"], name: "index_posts_on_goal_id", using: :btree
   add_index "posts", ["profile_id"], name: "index_posts_on_profile_id", using: :btree
 
