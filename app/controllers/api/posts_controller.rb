@@ -8,12 +8,11 @@ class Api::PostsController < Api::BaseController
   end
 
   def get_likes
-    @likes = Post.find(params[:id]).likes.all
+    @likesCount = Post.find(params[:id]).likes.count(:all)
   end
 
   def comment
     @comment = Comment.new(comment_params)
-    @data = JSON.parse(request.body.read)
     @comment.user = User.where(facebook_token: request.headers["facebook_token"]).first
     @comment.post = Post.find(params[:id])
     if @comment.save
@@ -24,10 +23,17 @@ class Api::PostsController < Api::BaseController
   end
 
   def like
-    @likes = Post.find(params[:id]).likes.all
+    @like = Comment.new()
+    @like.user = User.where(facebook_token: request.headers["facebook_token"]).first
+    @like.post = Post.find(params[:id])
+    if @like.save
+      render nothing: true, :status => 200
+    else
+      render :text =>  @like.post.text, :status => 422
+    end
   end
 protected
   def comment_params
-    params.require(:comment).permit(:body, :post_id, :user_id)
+    params.require(:comment).permit(:body)
   end
 end

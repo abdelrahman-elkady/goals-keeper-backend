@@ -1,2 +1,2 @@
-json.(@post, :text, :private)
+json.likes @likesCount
 

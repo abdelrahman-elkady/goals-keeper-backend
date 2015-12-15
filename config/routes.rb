@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :posts
     get 'posts/:id/comments' => 'posts#get_comments'
     get 'posts/:id/likes' => 'posts#get_likes'
-    post 'posts/:id/comment' => 'posts#comment'
-    post 'posts/:id/like' => 'posts#like'
+    post 'posts/:id/comments' => 'posts#comment'
+    post 'posts/:id/likes' => 'posts#like'
   end
 end
