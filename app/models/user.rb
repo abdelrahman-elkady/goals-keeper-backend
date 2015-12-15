@@ -14,10 +14,6 @@ class User < ActiveRecord::Base
   has_many :followers, :through => :following_followers
   has_many :followings, :through => :following_followings, :source => :user
 
-  def posts
-    Post.where("creator_id = ? or profile_id = ?",id,id)
-  end
-
   def self.from_facebook_token(token)
     facebook ||= Koala::Facebook::API.new(token)
     fetched_data = facebook.api("/me?fields=id,first_name,last_name,hometown,gender,birthday,picture")
