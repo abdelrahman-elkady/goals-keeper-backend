@@ -23,13 +23,13 @@ class Api::PostsController < Api::BaseController
   end
 
   def like
-    @like = Comment.new()
+    @like = Like.new()
     @like.user = User.where(facebook_token: request.headers["facebook_token"]).first
     @like.post = Post.find(params[:id])
     if @like.save
       render nothing: true, :status => 200
     else
-      render :text =>  @like.post.text, :status => 422
+      render :text =>  @like.user.text, :status => 422
     end
   end
 protected

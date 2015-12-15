@@ -1,2 +1,2 @@
-json.array! @posts, :text ,:type ,:private ,:user_id ,:goal_id
+json.array! @posts, :text ,:private ,:user_id ,:goal_id
 

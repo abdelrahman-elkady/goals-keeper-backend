@@ -36,6 +36,6 @@ protected
     params.permit(:title, :description)
   end
   def post_params
-    params.permit(:text,:user_id,:goal_id)
+    params.permit(:text)
   end
 end
