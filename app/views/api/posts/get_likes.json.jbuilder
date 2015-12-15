@@ -1,0 +1,2 @@
+json.(@post, :text, :private)
+
