@@ -33,6 +33,14 @@ class Api::UsersController < Api::BaseController
   def user_posts
     @posts = User.find(params[:id]).posts.all
   end
+
+  def user_following
+    @goals = User.find(params[:id]).goals.all
+  end
+
+  def user_followers
+    @posts = User.find(params[:id]).posts.all
+  end
 protected
 
   def user_params
