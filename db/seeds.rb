@@ -14,23 +14,23 @@ kady.goals << a_plus
 kady.goals << quit_smoking
 kady.save
 
-post_1 = GoalPost.new
+post_1 = Post.new
 post_1.text = 'i will study all day today'
 post_1.goal = a_plus
-post_1.creator = kady
+post_1.user = kady
 post_1.save
 
 
-post_2 = ProfilePost.new
+post_2 = Post.new
 post_2.text = 'would you explain ruby to me ? please ...'
-post_2.creator = ali
-post_2.profile = kady
+post_2.goal = a_plus
+post_2.user = ali
 post_2.save
 
-post_3 = GoalPost.new
+post_3 = Post.new
 post_3.text = 'i would like to improve my GPA this semester too'
-post_3.creator = abdo
 post_3.goal = quit_smoking
+post_3.user = abdo
 post_3.save
 
 comment_1 = Comment.new
