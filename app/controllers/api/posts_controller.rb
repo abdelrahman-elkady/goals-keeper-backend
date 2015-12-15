@@ -14,12 +14,12 @@ class Api::PostsController < Api::BaseController
   def comment
     @comment = Comment.new(comment_params)
     @data = JSON.parse(request.body.read)
-    @comment.user = User.where(facebook_token: @data['facebook_token']).first
+    @comment.user = User.where(facebook_token: request.headers["facebook_token"]).first
     @comment.post = Post.find(params[:id])
     if @comment.save
-      render :status => 200
+      render nothing: true, :status => 200
     else
-      render :status => 422
+      render nothing: true, :status => 422
     end
   end
 

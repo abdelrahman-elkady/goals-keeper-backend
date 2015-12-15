@@ -18,13 +18,12 @@ class Api::GoalsController < Api::BaseController
 
   def post_create
     @post = Post.new(post_params)
-    @data = JSON.parse(request.body.read)
-    @post.user = User.where(facebook_token: @data['facebook_token']).first
+    @post.user = User.where(facebook_token: request.headers["facebook_token"]).first
     @post.goal = Goal.find(params[:id])
     if @post.save
-      render :status => 200
+      render nothing: true, :status => 200
     else
-      render :status => 422
+      render nothing: true, :status => 422
     end
   end
 
