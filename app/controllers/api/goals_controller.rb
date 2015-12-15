@@ -8,7 +8,7 @@ class Api::GoalsController < Api::BaseController
   end
   
   def create
-    @goal = Goal.new(goal_params)
+    @goal = Goal.new(params)
     if @goal.save
       render :status => 200
     else
@@ -17,11 +17,10 @@ class Api::GoalsController < Api::BaseController
   end
 
   def post_create
-    @post = Post.new(post_params)
+    @post = Post.new(params)
     @data = JSON.parse(request.body.read)
-    @post.user = User.where(facebook_token: "token").first
+    @post.user = User.where(facebook_token: @data['facebook_token']).first
     @post.goal = Goal.find(params[:id])
-    @post.save
     if @post.save
       render :status => 200
     else

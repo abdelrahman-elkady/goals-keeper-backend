@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     get 'goals/:id/posts' => 'goals#goal_posts'
     post 'goals/:id/posts' => 'goals#post_create'
     resources :posts
-    get 'posts/:id/comments' => 'goals#get_comments'
-    get 'posts/:id/likes' => 'goals#get_likes'
-    post 'posts/:id/comments' => 'goals#comment'
-    post 'posts/:id/likes' => 'goals#like'
+    get 'posts/:id/comments' => 'posts#get_comments'
+    get 'posts/:id/likes' => 'posts#get_likes'
+    post 'posts/:id/comment' => 'posts#comment'
+    post 'posts/:id/like' => 'posts#like'
   end
 end
