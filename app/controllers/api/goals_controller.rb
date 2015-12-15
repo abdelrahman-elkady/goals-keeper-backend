@@ -6,13 +6,13 @@ class Api::GoalsController < Api::BaseController
   def show
     @goal = Goal.find(params[:id])
   end
-  
+
   def create
     @goal = Goal.new(goal_params)
     if @goal.save
-      render :status => 200
+      render nothing: true, :status => 200
     else
-      render :status => 422
+      render nothing: true, :status => 422
     end
   end
 
