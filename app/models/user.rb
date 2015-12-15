@@ -20,44 +20,49 @@ class User < ActiveRecord::Base
   end
 
   def self.from_facebook_token(token)
-    @facebook ||= Koala::Facebook::API.new(token)
-    @fetched_data = @facebook.api("/me?fields=id,first_name,last_name,hometown,gender,birthday,picture")
+    facebook ||= Koala::Facebook::API.new(token)
+    fetched_data = facebook.api("/me?fields=id,first_name,last_name,hometown,gender,birthday,picture")
 
-    puts @fetched_data
+    if(not fetched_data["error"])
 
-    @user = self.where(facebook_id: @fetched_data["id"]).first_or_initialize.tap do |user|
+    user = self.where(facebook_id: fetched_data["id"]).first_or_initialize.tap do |user|
 
-      if(@fetched_data["first_name"])
-        user.first_name ||= @fetched_data["first_name"]
+      if(fetched_data["first_name"])
+        user.first_name ||= fetched_data["first_name"]
       end
 
-      if(@fetched_data["last_name"])
-        user.last_name ||= @fetched_data["last_name"]
+      if(fetched_data["last_name"])
+        user.last_name ||= fetched_data["last_name"]
       end
 
-      if(@fetched_data["hometown"])
-        user.city ||= @fetched_data["hometown"]["name"].split(",")[0]
-        user.country ||= @fetched_data["hometown"]["name"].split(",")[1]
+      if(fetched_data["hometown"])
+        user.city ||= fetched_data["hometown"]["name"].split(",")[0]
+        user.country ||= fetched_data["hometown"]["name"].split(",")[1]
       end
 
-      if(@fetched_data["gender"])
-        user.gender ||= @fetched_data["gender"]
+      if(fetched_data["gender"])
+        user.gender ||= fetched_data["gender"] == "male"
       end
 
-      if(@fetched_data["birthday"])
-        user.date_of_birth = Date.strptime(@fetched_data["birthday"], "%m/%d/%Y")
+      if(fetched_data["birthday"])
+        user.date_of_birth ||= Date.strptime(fetched_data["birthday"], "%m/%d/%Y")
       end
 
-      if(@fetched_data["picture"])
-        user.profile_picture = @fetched_data["picture"]["data"]["url"]
+      if(fetched_data["picture"])
+        user.profile_picture ||= fetched_data["picture"]["data"]["url"]
       end
 
-      if(@fetched_data["id"])
-        user.facebook_id = @fetched_data["id"]
+      if(fetched_data["id"])
+        user.facebook_id = fetched_data["id"]
       end
+
+      user.facebook_token = token
 
       user.save!
     end
+
+  end
+
   end
 
 end
