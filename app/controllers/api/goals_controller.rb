@@ -8,7 +8,7 @@ class Api::GoalsController < Api::BaseController
   end
   
   def create
-    @goal = Goal.new(params)
+    @goal = Goal.new(goal_params)
     if @goal.save
       render :status => 200
     else
@@ -34,7 +34,7 @@ class Api::GoalsController < Api::BaseController
 protected
 
   def goal_params
-    params.require(:goal).permit(:title, :description)
+    params.permit(:title, :description)
   end
   def post_params
     params.require(:post).permit(:text)
