@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users
     get 'users/:id/goals' => 'users#user_goals'
     get 'users/:id/posts' => 'users#user_posts'
+    post 'users/:id/goals' => 'users#user_add_goals'
     get 'users/:id/followings' => 'users#user_followings'
     get 'users/:id/followers' => 'users#user_followers'
     resources :goals

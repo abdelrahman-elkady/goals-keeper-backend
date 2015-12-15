@@ -29,7 +29,7 @@ class Api::PostsController < Api::BaseController
     if @like.save
       render nothing: true, :status => 200
     else
-      render :text =>  @like.user.text, :status => 422
+      render nothing: true, :status => 422
     end
   end
 protected

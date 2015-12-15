@@ -10,9 +10,9 @@ class Api::UsersController < Api::BaseController
   def create
     @user = User.new(user_params)
     if @user.save
-      render :status => 200
+      render nothing: true, :status => 200
     else
-      render :status => 422
+      render nothing: true, :status => 422
     end
   end
 
@@ -20,9 +20,9 @@ class Api::UsersController < Api::BaseController
     @user = User.find(params[:id])
     @user.update_attributes(params)
     if @user.save
-      render :status => 200
+      render nothing: true, :status => 200
     else
-      render :status => 422
+      render nothing: true, :status => 422
     end
   end
 
@@ -32,6 +32,14 @@ class Api::UsersController < Api::BaseController
 
   def user_posts
     @posts = User.find(params[:id]).posts.all
+  end
+
+  def user_add_goals
+    @data = JSON.parse(request.body.read)
+    @goal = Goal.find(@data['goal_id'])
+    @user = User.find(params[:id])
+    @user.goals << @goal
+    render nothing: true
   end
 
   def user_following
