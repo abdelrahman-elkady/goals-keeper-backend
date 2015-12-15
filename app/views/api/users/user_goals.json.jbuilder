@@ -1,4 +1,1 @@
-json.goals @goals do |goal|
-	json.title post.title
-	json.private post.private
-end
+json.array! @goals, :title, :description
