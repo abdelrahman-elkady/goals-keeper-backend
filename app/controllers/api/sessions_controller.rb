@@ -5,7 +5,7 @@ class Api::SessionsController < Api::BaseController
       @user = User.from_facebook_token(@data['token'])
 
       if(@user)
-        render json: user.id
+        render :create, :status => 200
       end
   end
 
