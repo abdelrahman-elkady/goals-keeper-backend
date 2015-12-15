@@ -9,11 +9,10 @@ class Api::UsersController < Api::BaseController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      render :status => 200
+
     else
-      render 'new'
+      render :status => 422
     end
   end
 
@@ -23,7 +22,7 @@ class Api::UsersController < Api::BaseController
 protected
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :gender)
   end
 
 end
