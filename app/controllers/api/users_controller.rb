@@ -52,7 +52,7 @@ class Api::UsersController < Api::BaseController
 protected
 
   def user_params
-    params.permit(:first_name, :last_name, :city, :country, :gender, :date_of_birth, :profile_picture, :facebook_token, :facebook_id)
+    params.permit(:id, :first_name, :last_name, :city, :country, :gender, :date_of_birth, :profile_picture, :facebook_token, :facebook_id)
   end
 
 end
