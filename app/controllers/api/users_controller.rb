@@ -8,7 +8,7 @@ class Api::UsersController < Api::BaseController
   end
   
   def create
-    @user = User.new(params)
+    @user = User.new(user_params)
     if @user.save
       render :status => 200
     else
@@ -44,7 +44,7 @@ class Api::UsersController < Api::BaseController
 protected
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender, :facebook_token)
+    params.permit(:first_name, :last_name, :city, :country, :gender, :date_of_birth, :profile_picture, :facebook_token, :facebook_id)
   end
 
 end

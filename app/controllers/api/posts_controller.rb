@@ -12,7 +12,7 @@ class Api::PostsController < Api::BaseController
   end
 
   def comment
-    @comment = Comment.new(params)
+    @comment = Comment.new(comment_params)
     @data = JSON.parse(request.body.read)
     @comment.user = User.where(facebook_token: @data['facebook_token']).first
     @comment.post = Post.find(params[:id])
@@ -28,6 +28,6 @@ class Api::PostsController < Api::BaseController
   end
 protected
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :post_id, :user_id)
   end
 end

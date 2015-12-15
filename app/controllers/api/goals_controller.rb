@@ -17,7 +17,7 @@ class Api::GoalsController < Api::BaseController
   end
 
   def post_create
-    @post = Post.new(params)
+    @post = Post.new(post_params)
     @data = JSON.parse(request.body.read)
     @post.user = User.where(facebook_token: @data['facebook_token']).first
     @post.goal = Goal.find(params[:id])
@@ -37,6 +37,6 @@ protected
     params.permit(:title, :description)
   end
   def post_params
-    params.require(:post).permit(:text)
+    params.permit(:text,:user_id,:goal_id)
   end
 end
