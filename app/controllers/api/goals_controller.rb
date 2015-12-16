@@ -18,9 +18,9 @@ class Api::GoalsController < Api::BaseController
 
   def post_create
     @post = Post.new(post_params)
-    @post.user = User.where(facebook_token: request.headers["facebook_token"]).first
+    @post.user = User.where(facebook_token: request.headers["Authorization"]).first
     @post.goal = Goal.find(params[:id])
-    if @post.save
+    if @post.save!
       render nothing: true, :status => 200
     else
       render nothing: true, :status => 422
