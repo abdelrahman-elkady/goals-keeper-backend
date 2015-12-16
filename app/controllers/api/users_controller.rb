@@ -46,7 +46,6 @@ class Api::UsersController < Api::BaseController
   end
 
   def user_remove_goals
-    @data = JSON.parse(request.body.read)
     @goal = Goal.find(params[:goal_id])
     @user = User.find(params[:id])
     @user.goals.delete(@goal)
