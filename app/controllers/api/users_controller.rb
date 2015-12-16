@@ -18,7 +18,7 @@ class Api::UsersController < Api::BaseController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(params)
+    @user.update_attributes(user_params)
     if @user.save
       render nothing: true, :status => 200
     else
