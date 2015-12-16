@@ -18,7 +18,7 @@ class Api::UsersController < Api::BaseController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(params[:goal_id])
+    @user.update_attributes(user_params)
     if @user.save
       render nothing: true, :status => 200
     else
@@ -45,7 +45,7 @@ class Api::UsersController < Api::BaseController
 
   def user_remove_goals
     @data = JSON.parse(request.body.read)
-    @goal = Goal.find(@data['id'])
+    @goal = Goal.find(params[:goal_id])
     @user = User.find(params[:id])
     @user.goals.delete(@goal)
     render nothing: true
