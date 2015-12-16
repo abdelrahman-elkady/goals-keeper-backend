@@ -6,7 +6,7 @@ class Api::UsersController < Api::BaseController
   def show
     @user = User.find(params[:id])
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -51,6 +51,7 @@ class Api::UsersController < Api::BaseController
     render nothing: true
   end
 
+<<<<<<< HEAD
   def follow_user
     @data = JSON.parse(request.body.read)
     @to_be_followed = User.find(@data['id'])
@@ -67,8 +68,13 @@ class Api::UsersController < Api::BaseController
     render nothing: true
   end
 
-  def user_following
+  def user_followings
     @followings = User.find(params[:id]).followings.all
+    if (@followings)
+      render :user_followings, status: 200
+    else
+      render nothing: true,status: 422
+    end
   end
 
   def user_followers
