@@ -34,6 +34,7 @@ class Api::UsersController < Api::BaseController
     @posts = User.find(params[:id]).posts.all
   end
 
+
   def user_add_goals
     @data = JSON.parse(request.body.read)
     @goal = Goal.find(@data['id'])
@@ -44,9 +45,25 @@ class Api::UsersController < Api::BaseController
 
   def user_remove_goals
     @data = JSON.parse(request.body.read)
-    @goal = Goal.find(@data['id'])
+    @goal = Goal.find(params[:goal_id])
     @user = User.find(params[:id])
     @user.goals.delete(@goal)
+    render nothing: true
+  end
+
+  def follow_user
+    @data = JSON.parse(request.body.read)
+    @to_be_followed = User.find(@data['id'])
+    @user = User.find(params[:id])
+    @user.followings<< @to_be_followed
+    render nothing: true
+  end
+
+  def unfollow_user
+    @data = JSON.parse(request.body.read)
+    @to_be_unfollowed = User.find(@data['id'])
+    @user = User.find(params[:id])
+    @user.followings.delete(@to_be_unfollowed)
     render nothing: true
   end
 

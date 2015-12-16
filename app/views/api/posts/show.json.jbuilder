@@ -1,1 +1,1 @@
-json.(@post,:id, :text ,:type ,:private ,:user_id ,:goal_id)
+json.(@post,:id, :text ,:private ,:user_id ,:goal_id)
