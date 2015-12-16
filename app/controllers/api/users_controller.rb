@@ -36,7 +36,7 @@ class Api::UsersController < Api::BaseController
 
   def user_add_goals
     @data = JSON.parse(request.body.read)
-    @goal = Goal.find(@data['goal_id'])
+    @goal = Goal.find(@data['id'])
     @user = User.find(params[:id])
     @user.goals << @goal
     render nothing: true
@@ -44,7 +44,7 @@ class Api::UsersController < Api::BaseController
 
   def user_remove_goals
     @data = JSON.parse(request.body.read)
-    @goal = Goal.find(@data['goal_id'])
+    @goal = Goal.find(@data['id'])
     @user = User.find(params[:id])
     @user.goals.delete(@goal)
     render nothing: true
