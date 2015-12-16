@@ -51,7 +51,6 @@ class Api::UsersController < Api::BaseController
     render nothing: true
   end
 
-<<<<<<< HEAD
   def follow_user
     @data = JSON.parse(request.body.read)
     @to_be_followed = User.find(@data['id'])
