@@ -6,9 +6,11 @@ Rails.application.routes.draw do
     get 'users/:id/goals' => 'users#user_goals'
     get 'users/:id/posts' => 'users#user_posts'
     post 'users/:id/goals' => 'users#user_add_goals'
-    delete 'users/:id/goals' => 'users#user_remove_goals'
+    delete 'users/:id/goals/:goal_id' => 'users#user_remove_goals'
     get 'users/:id/followings' => 'users#user_followings'
     get 'users/:id/followers' => 'users#user_followers'
+    post '/users/:id/followings' => 'users#follow_user' 
+    delete '/users/:id/followings' => 'users#unfollow_user' 
     resources :goals
     get 'goals/:id/posts' => 'goals#goal_posts'
     post 'goals/:id/posts' => 'goals#post_create'
