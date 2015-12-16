@@ -1,1 +1,1 @@
-json.array! @posts, :text, :private
+json.array! @posts,:id, :text, :private

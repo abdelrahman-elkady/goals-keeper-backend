@@ -1,1 +1,1 @@
-json.array! @goals, :title, :description
+json.array! @goals, :id, :title, :description

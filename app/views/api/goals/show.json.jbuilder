@@ -1,1 +1,1 @@
-json.(@goal, :title, :description)
+json.(@goal,:id, :title, :description)

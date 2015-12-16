@@ -42,6 +42,14 @@ class Api::UsersController < Api::BaseController
     render nothing: true
   end
 
+  def user_remove_goals
+    @data = JSON.parse(request.body.read)
+    @goal = Goal.find(@data['goal_id'])
+    @user = User.find(params[:id])
+    @user.goals.delete(@goal)
+    render nothing: true
+  end
+
   def user_following
     @followings = User.find(params[:id]).followings.all
   end

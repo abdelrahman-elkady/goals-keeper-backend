@@ -1,2 +1,2 @@
-json.array! @comments, :body, :user_id, :post_id
+json.array! @comments,:id, :body, :user_id, :post_id
 
