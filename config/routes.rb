@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   namespace :api, defaults: { format: :json } do
     post '/authentication/', to: 'sessions#create', as: 'authentication'
     resources :users
@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     delete 'users/:id/goals/:goal_id' => 'users#user_remove_goals'
     get 'users/:id/followings' => 'users#user_followings'
     get 'users/:id/followers' => 'users#user_followers'
-    post '/users/:id/followings' => 'users#follow_user' 
-    delete '/users/:id/followings' => 'users#unfollow_user' 
+    post '/users/:id/followings' => 'users#follow_user'
+    delete '/users/:id/followings/:followed_id' => 'users#unfollow_user' 
     resources :goals
     get 'goals/:id/posts' => 'goals#goal_posts'
     post 'goals/:id/posts' => 'goals#post_create'

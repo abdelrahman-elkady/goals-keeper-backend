@@ -56,13 +56,14 @@ class Api::UsersController < Api::BaseController
     @data = JSON.parse(request.body.read)
     @to_be_followed = User.find(@data['id'])
     @user = User.find(params[:id])
-    @user.followings<< @to_be_followed
+    if(@user.followings.where(:id => @data['id']).empty?)
+        @user.followings<< @to_be_followed
+    end
     render nothing: true
   end
 
   def unfollow_user
-    @data = JSON.parse(request.body.read)
-    @to_be_unfollowed = User.find(@data['id'])
+    @to_be_unfollowed = User.find(params['followed_id'])
     @user = User.find(params[:id])
     @user.followings.delete(@to_be_unfollowed)
     render nothing: true
