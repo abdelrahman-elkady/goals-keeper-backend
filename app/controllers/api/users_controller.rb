@@ -39,7 +39,9 @@ class Api::UsersController < Api::BaseController
     @data = JSON.parse(request.body.read)
     @goal = Goal.find(@data['id'])
     @user = User.find(params[:id])
-    @user.goals << @goal
+    if(@user.goals.where(:id => @data['id']).empty?)
+        @user.goals << @goal
+    end
     render nothing: true
   end
 
